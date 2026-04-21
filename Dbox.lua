@@ -4,8 +4,10 @@ local function Print(message)
   DEFAULT_CHAT_FRAME:AddMessage(string.format("%s: %s", ADDON_PREFIX, message))
 end
 
+local MAX_ITEM_LEVEL = 1000
+
 local uncommonTable = {
-  { min = 1, max = 20, dust = "Strange Dust", essence = "Lesser/Greater Magic Essence" },
+  { min = 1, max = 20, dust = "Strange Dust", essence = "Lesser or Greater Magic Essence" },
   { min = 21, max = 25, dust = "Soul Dust", essence = "Lesser Astral Essence" },
   { min = 26, max = 30, dust = "Soul Dust", essence = "Greater Astral Essence" },
   { min = 31, max = 35, dust = "Vision Dust", essence = "Lesser Mystic Essence" },
@@ -13,7 +15,7 @@ local uncommonTable = {
   { min = 41, max = 45, dust = "Dream Dust", essence = "Lesser Nether Essence" },
   { min = 46, max = 50, dust = "Dream Dust", essence = "Greater Nether Essence" },
   { min = 51, max = 55, dust = "Illusion Dust", essence = "Lesser Eternal Essence" },
-  { min = 56, max = 1000, dust = "Illusion Dust", essence = "Greater Eternal Essence" },
+  { min = 56, max = MAX_ITEM_LEVEL, dust = "Illusion Dust", essence = "Greater Eternal Essence" },
 }
 
 local rareTable = {
@@ -24,7 +26,7 @@ local rareTable = {
   { min = 36, max = 40, shard = "Small Radiant Shard" },
   { min = 41, max = 45, shard = "Large Radiant Shard" },
   { min = 46, max = 50, shard = "Small Brilliant Shard" },
-  { min = 51, max = 1000, shard = "Large Brilliant Shard" },
+  { min = 51, max = MAX_ITEM_LEVEL, shard = "Large Brilliant Shard" },
 }
 
 local function MatchRange(level, tableData)
