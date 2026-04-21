@@ -1,0 +1,7 @@
+## Interface: 11507
+## Title: Dbox
+## Notes: Disenchant helper for WoW Classic
+## Author: ahhz-j
+## Version: 1.0.0
+
+Dbox.lua
