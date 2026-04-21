@@ -4,10 +4,9 @@ local function Print(message)
   DEFAULT_CHAT_FRAME:AddMessage(string.format("%s: %s", ADDON_PREFIX, message))
 end
 
-local MAX_ITEM_LEVEL = 1000
-
 local uncommonTable = {
-  { min = 1, max = 20, dust = "Strange Dust", essence = "Lesser or Greater Magic Essence" },
+  { min = 1, max = 15, dust = "Strange Dust", essence = "Lesser Magic Essence" },
+  { min = 16, max = 20, dust = "Strange Dust", essence = "Greater Magic Essence" },
   { min = 21, max = 25, dust = "Soul Dust", essence = "Lesser Astral Essence" },
   { min = 26, max = 30, dust = "Soul Dust", essence = "Greater Astral Essence" },
   { min = 31, max = 35, dust = "Vision Dust", essence = "Lesser Mystic Essence" },
@@ -15,7 +14,7 @@ local uncommonTable = {
   { min = 41, max = 45, dust = "Dream Dust", essence = "Lesser Nether Essence" },
   { min = 46, max = 50, dust = "Dream Dust", essence = "Greater Nether Essence" },
   { min = 51, max = 55, dust = "Illusion Dust", essence = "Lesser Eternal Essence" },
-  { min = 56, max = MAX_ITEM_LEVEL, dust = "Illusion Dust", essence = "Greater Eternal Essence" },
+  { min = 56, dust = "Illusion Dust", essence = "Greater Eternal Essence" },
 }
 
 local rareTable = {
@@ -26,12 +25,12 @@ local rareTable = {
   { min = 36, max = 40, shard = "Small Radiant Shard" },
   { min = 41, max = 45, shard = "Large Radiant Shard" },
   { min = 46, max = 50, shard = "Small Brilliant Shard" },
-  { min = 51, max = MAX_ITEM_LEVEL, shard = "Large Brilliant Shard" },
+  { min = 51, shard = "Large Brilliant Shard" },
 }
 
 local function MatchRange(level, tableData)
   for _, info in ipairs(tableData) do
-    if level >= info.min and level <= info.max then
+    if level >= info.min and (not info.max or level <= info.max) then
       return info
     end
   end
@@ -69,8 +68,10 @@ local function DescribeDisenchant(itemLink)
   elseif itemQuality == LE_ITEM_QUALITY_EPIC then
     if itemLevel >= 56 then
       Print(string.format("%s (iLvl %d): Nexus Crystal", itemLink, itemLevel))
+    elseif itemLevel >= 51 then
+      Print(string.format("%s (iLvl %d): Large Brilliant Shard", itemLink, itemLevel))
     else
-      Print(string.format("%s (iLvl %d): High-level shard outcomes (varies by item)", itemLink, itemLevel))
+      Print(string.format("%s (iLvl %d): Small Brilliant Shard", itemLink, itemLevel))
     end
     return
   end
