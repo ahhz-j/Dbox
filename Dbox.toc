@@ -1,0 +1,20 @@
+## Interface: 20505, 38001, 30801, 50502, 50503
+## Title: ahhz's |cffff0000D|rbox 分解助手
+## Title-zhCN: ahhz's |cffff0000D|rbox 分解助手
+## Notes: ahhz's Disenchant box
+## Notes-zhCN: ahhz's |cffff0000D|rbox 分解助手。|n·使用 /dbox 呼出主界面。
+## IconTexture: Interface\AddOns\Dbox\icon\Dboxlogo.png
+## Category-enUS: ahhz
+## Category-zhCN: ahhz插件集
+## Author: ahhz & 霜语 @iTank Studio Works.
+## Version: 1.2.1
+## SavedVariables: DboxDB
+
+data.lua
+ui.lua
+list.lua
+scan.lua
+layout.lua
+config.lua
+panels.lua
+dbox.lua
